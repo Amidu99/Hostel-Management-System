@@ -56,7 +56,7 @@ public class LoadingFormController {
                 login.setTitle("Welcome to D24 Hostel Management");
                 login.setScene(scene);
                 login.setResizable(false);
-                //login.getIcons().add(new Image("assets/icons/favicon.png"));
+                login.getIcons().add(new Image("assets/icons/favicon.png"));
                 login.show();
             } catch (IOException e) {
                 e.printStackTrace();
