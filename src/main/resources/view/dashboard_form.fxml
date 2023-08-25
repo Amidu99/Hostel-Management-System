@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hms.controller.DashboardFormController">
+   <children>
+      <ImageView blendMode="MULTIPLY" fitHeight="650.0" fitWidth="1200.0" opacity="0.25" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/images/glow.gif" />
+         </image>
+      </ImageView>
+      <ImageView blendMode="MULTIPLY" fitHeight="650.0" fitWidth="1200.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/images/frame-bg.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="100.0" fitWidth="146.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons/logo-low.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="224.0" fitWidth="343.0" layoutX="15.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons/buttons.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblUser" layoutX="34.0" layoutY="112.0" text="Hi Admin" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDate" layoutX="900.0" layoutY="15.0">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblClock" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1035.0" layoutY="610.0" prefHeight="30.0" prefWidth="160.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="NONE" />
+         </cursor>
+      </Label>
+      <PieChart fx:id="genderChart" layoutX="320.0" layoutY="220.0" prefHeight="354.0" prefWidth="300.0" />
+      <BarChart fx:id="roomBarChart" barGap="0.0" blendMode="MULTIPLY" categoryGap="0.0" layoutX="673.0" layoutY="169.0" prefHeight="400.0" prefWidth="350.0" title="Hostel Rooms">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <JFXButton fx:id="btnRooms" contentDisplay="GRAPHIC_ONLY" layoutX="25.0" layoutY="215.0" onAction="#btnRoomsOnAction" prefHeight="35.0" prefWidth="115.0" text="Rooms" />
+      <JFXButton fx:id="btnStudents" contentDisplay="GRAPHIC_ONLY" layoutX="39.0" layoutY="258.0" onAction="#btnStudentsOnAction" prefHeight="35.0" prefWidth="115.0" text="Students" />
+      <JFXButton fx:id="btnReservation" contentDisplay="GRAPHIC_ONLY" layoutX="55.0" layoutY="301.0" onAction="#btnReservationOnAction" prefHeight="35.0" prefWidth="115.0" text="Reservations" />
+      <JFXButton fx:id="btnPayments" contentDisplay="GRAPHIC_ONLY" layoutX="39.0" layoutY="343.0" onAction="#btnPaymentsOnAction" prefHeight="35.0" prefWidth="115.0" text="Payments" />
+      <JFXButton fx:id="btnSettings" contentDisplay="GRAPHIC_ONLY" layoutX="24.0" layoutY="387.0" onAction="#btnSettingsOnAction" prefHeight="35.0" prefWidth="115.0" text="Settings" />
+      <JFXButton fx:id="btnSignOut" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="40.0" layoutY="585.0" maxHeight="36.0" maxWidth="90.0" minHeight="36.0" minWidth="90.0" onAction="#btnSignOutOnAction" prefHeight="36.0" prefWidth="90.0" text="sign out">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/sign-out.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>

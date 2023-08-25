@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="root" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hms.controller.StudentFormController">
+   <children>
+      <ImageView fitHeight="650.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/frame-bg.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnBack" layoutX="40.0" layoutY="40.0" onAction="#btnBackOnAction" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #2141dd; -fx-border-color: #10039d;" text="Back" textFill="#10039d">
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TableView fx:id="tblStudent" blendMode="MULTIPLY" layoutX="50.0" layoutY="330.0" onMouseClicked="#tblStudentOnAction" prefHeight="300.0" prefWidth="1100.0">
+         <columns>
+            <TableColumn fx:id="colStuID" editable="false" prefWidth="120.0" text="Student_ID" />
+            <TableColumn fx:id="colName" editable="false" prefWidth="275.0" text="Name" />
+            <TableColumn fx:id="colBirthday" editable="false" minWidth="0.0" prefWidth="150.0" text="Birthday" />
+            <TableColumn fx:id="colGender" editable="false" prefWidth="110.0" text="Gender" />
+            <TableColumn fx:id="colTel" minWidth="0.0" prefWidth="210.0" text="Contact_No" />
+            <TableColumn fx:id="colAddress" editable="false" prefWidth="215.0" text="Address" />
+         </columns>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </TableView>
+      <JFXButton fx:id="btnReset" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="856.0" layoutY="280.0" onAction="#btnResetOnAction" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: #edfc6e; -fx-border-color: #bca70d;" text="Reset" textFill="#bca70d">
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnSave" contentDisplay="CENTER" graphicTextGap="3.0" layoutX="933.0" layoutY="280.0" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: #29c63e; -fx-border-color: #077916;" text="Save" textFill="#077916">
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnUpdate" contentDisplay="CENTER" graphicTextGap="3.0" layoutX="1010.0" layoutY="280.0" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: #d044af; -fx-border-color: #801559;" text="Update" textFill="#801559">
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnDelete" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1087.0" layoutY="280.0" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: #ff1c1c; -fx-border-color: #9a0707;" text="Delete" textFill="#9a0707">
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TextField fx:id="txtStudentID" blendMode="MULTIPLY" layoutX="140.0" layoutY="125.0" onAction="#txtStudentIDOnAction" prefHeight="30.0" prefWidth="200.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtAddress" blendMode="MULTIPLY" layoutX="140.0" layoutY="225.0" onAction="#txtAddressOnAction" prefHeight="30.0" prefWidth="200.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtName" blendMode="MULTIPLY" layoutX="440.0" layoutY="125.0" onAction="#txtNameOnAction" prefHeight="30.0" prefWidth="200.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtTel" blendMode="MULTIPLY" layoutX="440.0" layoutY="225.0" onAction="#txtTelOnAction" prefHeight="30.0" prefWidth="200.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="140.0" layoutY="100.0" text="Student ID*">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="140.0" layoutY="200.0" text="Address">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="440.0" layoutY="100.0" text="Name*">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="440.0" layoutY="200.0" text="Contact No*">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label blendMode="MULTIPLY" layoutX="424.0" layoutY="10.0" text="Students Manage">
+         <font>
+            <Font name="Segoe Print Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNextStudentID" alignment="CENTER" contentDisplay="CENTER" layoutX="996.0" layoutY="125.0" prefHeight="30.0" prefWidth="100.0" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="cmbGender" blendMode="MULTIPLY" layoutX="740.0" layoutY="225.0" prefHeight="30.0" prefWidth="150.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXComboBox>
+      <Label layoutX="740.0" layoutY="200.0" text="Gender*">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="1000.0" layoutY="100.0" text="Next Student ID">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblInvalidStudentID" layoutX="124.0" layoutY="157.0" text="**invalid student id, ( must be like 'S999' )**" textFill="#d70c0c">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblInvalidAddress" layoutX="191.0" layoutY="257.0" text="**invalid Address**" textFill="#d70c0c">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblInvalidName" layoutX="481.0" layoutY="157.0" text="**invalid name type**" textFill="#d70c0c">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblInvalidTel" layoutX="477.0" layoutY="257.0" text="**invalid contact no**" textFill="#d70c0c">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblClock" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1030.0" layoutY="605.0" prefHeight="30.0" prefWidth="160.0">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="24.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="NONE" />
+         </cursor>
+      </Label>
+      <DatePicker fx:id="txtBirthday" blendMode="MULTIPLY" editable="false" layoutX="740.0" layoutY="125.0" onAction="#txtBirthdayOnAction" prefHeight="30.0" prefWidth="200.0" />
+      <Label layoutX="740.0" layoutY="100.0" text="Birthday*">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblInvalidBirthday" layoutX="789.0" layoutY="157.0" text="**invalid birthday**" textFill="#d70c0c">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
