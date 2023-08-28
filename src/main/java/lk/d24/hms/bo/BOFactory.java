@@ -13,21 +13,23 @@ public class BOFactory {
     }
 
     public enum BOTypes {
-        LOGIN, ROOM, STUDENT, USER
+        DASHBOARD, LOGIN, ROOM, STUDENT, USER
     }
 
     public SuperBO getBO(BOFactory.BOTypes type) {
         switch (type) {
+            case DASHBOARD:
+                return new DashboardBOImpl();
             case LOGIN:
                 return new LoginBOImpl();
 //            case ROOM:
 //                return new RoomBOImpl();
-//            case STUDENT:
-//                return new StudentBOImpl();
+            case STUDENT:
+                return new StudentBOImpl();
 //            case RETURN:
 //                return new ReturnBOImpl();
-//            case USER:
-//                return new UserBOImpl();
+            case USER:
+                return new UserBOImpl();
             default:
                 return null;
         }

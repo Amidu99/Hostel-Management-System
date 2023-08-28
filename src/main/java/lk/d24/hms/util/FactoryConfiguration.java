@@ -11,12 +11,12 @@ public class FactoryConfiguration {
     public static FactoryConfiguration factoryConfiguration;
     private final SessionFactory sessionFactory;
 
-
  private FactoryConfiguration() {
      StandardServiceRegistryBuilder standardServiceRegistryBuilder = new StandardServiceRegistryBuilder();
         standardServiceRegistryBuilder.loadProperties("hibernate.properties");
         MetadataSources metadataSources = new MetadataSources(standardServiceRegistryBuilder.build());
         metadataSources.
+                addAnnotatedClass(Student.class).
                 addAnnotatedClass(User.class);
         Metadata metadata = metadataSources.getMetadataBuilder().build();
         sessionFactory = metadata.getSessionFactoryBuilder().build();

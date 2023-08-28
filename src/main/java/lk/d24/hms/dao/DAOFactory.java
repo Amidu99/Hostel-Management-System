@@ -1,6 +1,6 @@
 package lk.d24.hms.dao;
 
-import lk.d24.hms.dao.custom.impl.UserDAOImpl;
+import lk.d24.hms.dao.custom.impl.*;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;
@@ -22,8 +22,8 @@ public class DAOFactory {
 //                return ReservationDaoImpl();
 //            case ROOM:
 //                return new RoomDAOImpl();
-//            case STUDENT:
-//                return new StudentDAOImpl();
+            case STUDENT:
+                return new StudentDAOImpl();
             case USER:
                 return new UserDAOImpl();
             default:
