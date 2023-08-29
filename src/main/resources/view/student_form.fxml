@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="root" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hms.controller.StudentFormController">
    <children>
       <ImageView fitHeight="650.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
@@ -21,15 +20,19 @@
             <Image url="@../assets/images/frame-bg.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnBack" layoutX="40.0" layoutY="40.0" onAction="#btnBackOnAction" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #2141dd; -fx-border-color: #10039d;" text="Back" textFill="#10039d">
-         <font>
-            <Font name="Segoe UI Black" size="12.0" />
-         </font>
+      <JFXButton fx:id="btnBack" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="16.0" layoutY="16.0" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#btnBackOnAction" prefHeight="50.0" prefWidth="50.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/back.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </JFXButton>
-      <TableView fx:id="tblStudent" blendMode="MULTIPLY" layoutX="50.0" layoutY="330.0" onMouseClicked="#tblStudentOnAction" prefHeight="300.0" prefWidth="1100.0">
+      <TableView fx:id="tblStudent" blendMode="MULTIPLY" layoutX="50.0" layoutY="330.0" onMouseClicked="#tblStudentOnAction" prefHeight="280.0" prefWidth="1100.0">
          <columns>
             <TableColumn fx:id="colStuID" editable="false" prefWidth="120.0" text="Student_ID" />
             <TableColumn fx:id="colName" editable="false" prefWidth="275.0" text="Name" />
@@ -114,9 +117,9 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label blendMode="MULTIPLY" layoutX="424.0" layoutY="10.0" text="Students Manage">
+      <Label blendMode="MULTIPLY" layoutX="426.0" layoutY="12.0" text="Manage Students">
          <font>
-            <Font name="Segoe Print Bold" size="40.0" />
+            <Font name="Gunplay 3D" size="50.0" />
          </font>
       </Label>
       <Label fx:id="lblNextStudentID" alignment="CENTER" contentDisplay="CENTER" layoutX="996.0" layoutY="125.0" prefHeight="30.0" prefWidth="100.0" textAlignment="CENTER" textFill="WHITE">
@@ -139,29 +142,29 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="lblInvalidStudentID" layoutX="124.0" layoutY="157.0" text="**invalid student id, ( must be like 'S999' )**" textFill="#d70c0c">
+      <Label fx:id="lblInvalidStudentID" layoutX="124.0" layoutY="157.0" text="**invalid student id, ( must be like 'S999' )**" textFill="#d70c0c" visible="false">
          <font>
             <Font name="System Bold Italic" size="11.0" />
          </font>
       </Label>
-      <Label fx:id="lblInvalidAddress" layoutX="191.0" layoutY="257.0" text="**invalid Address**" textFill="#d70c0c">
+      <Label fx:id="lblInvalidAddress" layoutX="191.0" layoutY="257.0" text="**invalid Address**" textFill="#d70c0c" visible="false">
          <font>
             <Font name="System Bold Italic" size="11.0" />
          </font>
       </Label>
-      <Label fx:id="lblInvalidName" layoutX="481.0" layoutY="157.0" text="**invalid name type**" textFill="#d70c0c">
+      <Label fx:id="lblInvalidName" layoutX="481.0" layoutY="157.0" text="**invalid name type**" textFill="#d70c0c" visible="false">
          <font>
             <Font name="System Bold Italic" size="11.0" />
          </font>
       </Label>
-      <Label fx:id="lblInvalidTel" layoutX="477.0" layoutY="257.0" text="**invalid contact no**" textFill="#d70c0c">
+      <Label fx:id="lblInvalidTel" layoutX="477.0" layoutY="257.0" text="**invalid contact no**" textFill="#d70c0c" visible="false">
          <font>
             <Font name="System Bold Italic" size="11.0" />
          </font>
       </Label>
-      <Label fx:id="lblClock" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1030.0" layoutY="605.0" prefHeight="30.0" prefWidth="160.0">
+      <Label fx:id="lblClock" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1035.0" layoutY="610.0" prefHeight="30.0" prefWidth="160.0">
          <font>
-            <Font name="Arial Rounded MT Bold" size="24.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
          <cursor>
             <Cursor fx:constant="NONE" />
@@ -173,7 +176,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="lblInvalidBirthday" layoutX="789.0" layoutY="157.0" text="**invalid birthday**" textFill="#d70c0c">
+      <Label fx:id="lblInvalidBirthday" layoutX="789.0" layoutY="157.0" text="**invalid birthday**" textFill="#d70c0c" visible="false">
          <font>
             <Font name="System Bold Italic" size="11.0" />
          </font>

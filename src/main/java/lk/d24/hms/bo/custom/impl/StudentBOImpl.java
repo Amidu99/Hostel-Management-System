@@ -24,4 +24,19 @@ public class StudentBOImpl implements StudentBO {
     public boolean saveStudent(StudentDTO s) {
         return studentDAO.add(new Student(s.getStudent_id(), s.getName(), s.getBirthday(), s.getGender(), s.getContact(), s.getAddress()));
     }
+
+    @Override
+    public String getNextStudentID() {
+        return studentDAO.generateNextID();
+    }
+
+    @Override
+    public boolean updateStudent(StudentDTO s) {
+        return studentDAO.update(new Student(s.getStudent_id(), s.getName(), s.getBirthday(), s.getGender(), s.getContact(), s.getAddress()));
+    }
+
+    @Override
+    public boolean deleteStudent(String student_id) {
+        return studentDAO.delete(student_id);
+    }
 }
