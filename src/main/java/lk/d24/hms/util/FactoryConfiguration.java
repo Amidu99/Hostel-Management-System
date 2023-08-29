@@ -16,6 +16,7 @@ public class FactoryConfiguration {
         standardServiceRegistryBuilder.loadProperties("hibernate.properties");
         MetadataSources metadataSources = new MetadataSources(standardServiceRegistryBuilder.build());
         metadataSources.
+                addAnnotatedClass(Room.class).
                 addAnnotatedClass(Student.class).
                 addAnnotatedClass(User.class);
         Metadata metadata = metadataSources.getMetadataBuilder().build();

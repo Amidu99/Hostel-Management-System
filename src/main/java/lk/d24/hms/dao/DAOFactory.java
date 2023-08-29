@@ -20,8 +20,8 @@ public class DAOFactory {
         switch (types) {
 //            case RESERVATION:
 //                return ReservationDaoImpl();
-//            case ROOM:
-//                return new RoomDAOImpl();
+            case ROOM:
+                return new RoomDAOImpl();
             case STUDENT:
                 return new StudentDAOImpl();
             case USER:

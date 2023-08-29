@@ -6,10 +6,10 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 public class StudentTM {
-        String student_id;
-        private String name;
-        private LocalDate birthday;
-        private String gender;
-        private String contact;
-        private String address;
+    String student_id;
+    private String name;
+    private LocalDate birthday;
+    private String gender;
+    private String contact;
+    private String address;
 }

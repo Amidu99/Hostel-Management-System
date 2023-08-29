@@ -22,8 +22,8 @@ public class BOFactory {
                 return new DashboardBOImpl();
             case LOGIN:
                 return new LoginBOImpl();
-//            case ROOM:
-//                return new RoomBOImpl();
+            case ROOM:
+                return new RoomBOImpl();
             case STUDENT:
                 return new StudentBOImpl();
 //            case RETURN:

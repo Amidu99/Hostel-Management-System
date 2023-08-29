@@ -2,7 +2,6 @@ package lk.d24.hms.dao.custom.impl;
 
 import lk.d24.hms.dao.custom.StudentDAO;
 import lk.d24.hms.entity.Student;
-import lk.d24.hms.entity.User;
 import lk.d24.hms.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

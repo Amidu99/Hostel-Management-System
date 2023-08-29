@@ -1,15 +1,22 @@
 package lk.d24.hms.controller;
 
+import animatefx.animation.JackInTheBox;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import lk.d24.hms.bo.BOFactory;
 import lk.d24.hms.bo.custom.LoginBO;
 import lk.d24.hms.dto.UserDTO;
+import java.io.IOException;
 
 public class LoginFormController {
 
@@ -76,14 +83,24 @@ public class LoginFormController {
         btnSignUp.setDisable(true);
     }
 
-    public void btnLoginOnAction(ActionEvent actionEvent) {
+    public void btnLoginOnAction(ActionEvent actionEvent) throws IOException {
         resetSignIn();
         String username = txtUser.getText();
         String password = txtPass.getText();
         if(!username.isEmpty() && !password.isEmpty()){
             boolean verified = loginBO.verifyLogin(username,password);
             if(verified){
-                System.out.println("Load Dashboard form");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/dashboard_form.fxml"));
+                Parent root = loader.load();
+                DashboardFormController dashboardFormController = loader.getController();
+                dashboardFormController.displayUsername(username);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                new JackInTheBox(root).play();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setTitle("D24 Hostel Management");
+                stage.centerOnScreen();
+                stage.setResizable(false);
             }else{
                 new Alert(Alert.AlertType.ERROR, "Login Failed :\nInvalid Username or Password!").show();
             }

@@ -10,6 +10,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hms.controller.DashboardFormController">
@@ -19,6 +20,24 @@
             <Image url="@../assets/images/glow.gif" />
          </image>
       </ImageView>
+      <Rectangle arcHeight="50.0" arcWidth="50.0" blendMode="MULTIPLY" fill="#00cfff" height="125.0" layoutX="250.0" layoutY="475.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Label layoutX="293.0" layoutY="475.0" text="Total Students">
+         <font>
+            <Font name="Javanese Text" size="18.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="50.0" arcWidth="50.0" blendMode="MULTIPLY" fill="#00cfff" height="125.0" layoutX="510.0" layoutY="475.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Label layoutX="560.0" layoutY="475.0" text="Total Rooms">
+         <font>
+            <Font name="Javanese Text" size="18.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="50.0" arcWidth="50.0" blendMode="MULTIPLY" fill="#00cfff" height="125.0" layoutX="770.0" layoutY="475.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Label layoutX="795.0" layoutY="475.0" text="Awaiting Payments">
+         <font>
+            <Font name="Javanese Text" size="18.0" />
+         </font>
+      </Label>
       <ImageView blendMode="MULTIPLY" fitHeight="650.0" fitWidth="1200.0" pickOnBounds="true">
          <image>
             <Image url="@../assets/images/frame-bg.png" />
@@ -39,9 +58,9 @@
             <Font name="Comic Sans MS Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblDate" layoutX="900.0" layoutY="15.0">
+      <Label fx:id="lblDate" layoutX="5.0" layoutY="610.0" textFill="#030303">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
       <Label fx:id="lblClock" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1035.0" layoutY="610.0" prefHeight="30.0" prefWidth="160.0">
@@ -52,8 +71,8 @@
             <Cursor fx:constant="NONE" />
          </cursor>
       </Label>
-      <PieChart fx:id="genderChart" layoutX="320.0" layoutY="220.0" prefHeight="354.0" prefWidth="300.0" />
-      <BarChart fx:id="roomBarChart" barGap="0.0" blendMode="MULTIPLY" categoryGap="0.0" layoutX="673.0" layoutY="169.0" prefHeight="400.0" prefWidth="350.0" title="Hostel Rooms">
+      <PieChart fx:id="genderChart" layoutX="250.0" layoutY="100.0" prefHeight="350.0" prefWidth="400.0" title="Students" />
+      <BarChart fx:id="roomBarChart" barGap="0.0" blendMode="MULTIPLY" categoryGap="0.0" layoutX="700.0" layoutY="100.0" prefHeight="350.0" prefWidth="350.0" title="Hostel Rooms">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -61,12 +80,27 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </BarChart>
-      <JFXButton fx:id="btnRooms" contentDisplay="GRAPHIC_ONLY" layoutX="25.0" layoutY="215.0" onAction="#btnRoomsOnAction" prefHeight="35.0" prefWidth="115.0" text="Rooms" />
-      <JFXButton fx:id="btnStudents" contentDisplay="GRAPHIC_ONLY" layoutX="39.0" layoutY="258.0" onAction="#btnStudentsOnAction" prefHeight="35.0" prefWidth="115.0" text="Students" />
-      <JFXButton fx:id="btnReservation" contentDisplay="GRAPHIC_ONLY" layoutX="55.0" layoutY="301.0" onAction="#btnReservationOnAction" prefHeight="35.0" prefWidth="115.0" text="Reservations" />
-      <JFXButton fx:id="btnPayments" contentDisplay="GRAPHIC_ONLY" layoutX="39.0" layoutY="343.0" onAction="#btnPaymentsOnAction" prefHeight="35.0" prefWidth="115.0" text="Payments" />
-      <JFXButton fx:id="btnSettings" contentDisplay="GRAPHIC_ONLY" layoutX="24.0" layoutY="387.0" onAction="#btnSettingsOnAction" prefHeight="35.0" prefWidth="115.0" text="Settings" />
-      <JFXButton fx:id="btnSignOut" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="40.0" layoutY="585.0" maxHeight="36.0" maxWidth="90.0" minHeight="36.0" minWidth="90.0" onAction="#btnSignOutOnAction" prefHeight="36.0" prefWidth="90.0" text="sign out">
+      <JFXButton fx:id="btnRooms" contentDisplay="GRAPHIC_ONLY" layoutX="25.0" layoutY="215.0" onAction="#btnRoomsOnAction" prefHeight="35.0" prefWidth="115.0" text="Rooms">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
+      <JFXButton fx:id="btnStudents" contentDisplay="GRAPHIC_ONLY" layoutX="39.0" layoutY="258.0" onAction="#btnStudentsOnAction" prefHeight="35.0" prefWidth="115.0" text="Students">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
+      <JFXButton fx:id="btnReservation" contentDisplay="GRAPHIC_ONLY" layoutX="55.0" layoutY="301.0" onAction="#btnReservationOnAction" prefHeight="35.0" prefWidth="115.0" text="Reservations">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
+      <JFXButton fx:id="btnPayments" contentDisplay="GRAPHIC_ONLY" layoutX="39.0" layoutY="343.0" onAction="#btnPaymentsOnAction" prefHeight="35.0" prefWidth="115.0" text="Payments">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
+      <JFXButton fx:id="btnSettings" contentDisplay="GRAPHIC_ONLY" layoutX="24.0" layoutY="387.0" onAction="#btnSettingsOnAction" prefHeight="35.0" prefWidth="115.0" text="Settings">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
+      <JFXButton fx:id="btnSignOut" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="28.0" layoutY="520.0" maxHeight="36.0" maxWidth="90.0" minHeight="36.0" minWidth="90.0" onAction="#btnSignOutOnAction" prefHeight="36.0" prefWidth="90.0" text="sign out">
          <graphic>
             <ImageView fitHeight="36.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -78,5 +112,20 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
+      <Label fx:id="lblTotStudents" layoutX="312.0" layoutY="510.0" text="22">
+         <font>
+            <Font name="DS-Digital Bold" size="72.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTotRooms" layoutX="574.0" layoutY="510.0" text="22">
+         <font>
+            <Font name="DS-Digital Bold" size="72.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblWaitingPay" layoutX="834.0" layoutY="510.0" text="22">
+         <font>
+            <Font name="DS-Digital Bold" size="72.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

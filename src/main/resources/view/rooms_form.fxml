@@ -1,14 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.d24.hms.controller.RoomsFormController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane fx:id="root" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hms.controller.RoomsFormController">
+   <children>
+      <ImageView fitHeight="450.0" fitWidth="700.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/images/frame-bg.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtRoomID" blendMode="MULTIPLY" layoutX="60.0" layoutY="115.0" onAction="#txtRoomIDOnAction" prefHeight="30.0" prefWidth="200.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtKeyMoney" blendMode="MULTIPLY" layoutX="60.0" layoutY="190.0" onAction="#txtKeyMoneyOnAction" prefHeight="30.0" prefWidth="200.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtRoomType" blendMode="MULTIPLY" layoutX="345.0" layoutY="115.0" onAction="#txtRoomTypeOnAction" prefHeight="30.0" prefWidth="200.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtQty" blendMode="MULTIPLY" layoutX="345.0" layoutY="190.0" onAction="#txtQtyOnAction" prefHeight="30.0" prefWidth="200.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="60.0" layoutY="100.0" text="Room ID*">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="175.0" text="Key Money*">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="345.0" layoutY="100.0" text="Room Type*">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="345.0" layoutY="175.0" text="Quantity*">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label blendMode="MULTIPLY" layoutX="190.0" layoutY="14.0" text="Manage Rooms">
+         <font>
+            <Font name="Gunplay 3D" size="50.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblInvalidRoomID" layoutX="41.0" layoutY="145.0" text="**invalid room id, ( must be like 'RM-0001' )**" textFill="#d70c0c" visible="false">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblInvalidAmount" layoutX="110.0" layoutY="220.0" text="**invalid amount**" textFill="#d70c0c" visible="false">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblInvalidType" layoutX="389.0" layoutY="145.0" text="**invalid room type**" textFill="#d70c0c" visible="false">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblInvalidQty" layoutX="394.0" layoutY="220.0" text="**invalid quantity**" textFill="#d70c0c" visible="false">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblRooms" blendMode="MULTIPLY" layoutX="30.0" layoutY="270.0" onMouseClicked="#tblRoomsOnClick" prefHeight="150.0" prefWidth="545.0">
+        <columns>
+          <TableColumn fx:id="colRoomID" prefWidth="95.0" text="Room_ID" />
+          <TableColumn fx:id="colRoomType" minWidth="75.0" prefWidth="220.0" text="Room Type" />
+            <TableColumn fx:id="colKeyMoney" minWidth="50.0" prefWidth="130.0" text="Key Money - Rs:" />
+            <TableColumn fx:id="colQty" minWidth="75.0" prefWidth="90.0" text="Quantity" />
+        </columns>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </TableView>
+      <JFXButton fx:id="btnBack" layoutX="599.0" layoutY="365.0" onAction="#btnBackOnAction" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #2141dd; -fx-border-color: #10039d;" text="Back" textFill="#10039d">
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnReset" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="605.0" layoutY="200.0" onAction="#btnResetOnAction" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: #edfc6e; -fx-border-color: #bca70d;" text="Reset" textFill="#bca70d">
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnSave" contentDisplay="CENTER" graphicTextGap="3.0" layoutX="605.0" layoutY="240.0" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: #29c63e; -fx-border-color: #077916;" text="Save" textFill="#077916">
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnUpdate" contentDisplay="CENTER" graphicTextGap="3.0" layoutX="605.0" layoutY="280.0" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: #d044af; -fx-border-color: #801559;" text="Update" textFill="#801559">
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnDelete" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="605.0" layoutY="320.0" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: #ff1c1c; -fx-border-color: #9a0707;" text="Delete" textFill="#9a0707">
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label fx:id="lblClock" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="582.0" layoutY="410.0" prefHeight="30.0" prefWidth="110.0">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="NONE" />
+         </cursor>
+      </Label>
+   </children>
 </AnchorPane>

@@ -1,6 +1,6 @@
 package lk.d24.hms.controller;
 
-import animatefx.animation.FadeInUp;
+import animatefx.animation.FadeInDown;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -47,12 +47,22 @@ public class DashboardFormController implements Initializable {
     @FXML
     private Label lblUser;
 
-    public static double maleCount = 5;
-    public static double femaleCount = 4;
+    @FXML
+    private Label lblTotStudents;
+
+    @FXML
+    private Label lblTotRooms;
+
+    @FXML
+    private Label lblWaitingPay;
+
+    public static double maleCount;
+    public static double femaleCount;
     public static double acCount = 5;
     public static double acFoodCount = 7;
     public static double nonACCount = 3;
     public static double nonACFoodCount = 9;
+    public static double waitingPayments = 9;
 
     static DashboardBO dashboardBO = (DashboardBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.DASHBOARD);
 
@@ -60,16 +70,17 @@ public class DashboardFormController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Clock.setClock(lblClock);
         lblDate.setText("  "+new SimpleDateFormat("EEEE - dd/MM/yyyy").format(Calendar.getInstance().getTime()));
-        loadCurrentValues();
+        loadCurrentGenderValues();
         setPieChart();
         setBarChart();
+        setTotLabels();
     }
 
     public void displayUsername(String username) {
-        lblUser.setText("Hi "+username);
+        lblUser.setText("Hi "+username+",");
     }
 
-    public static void loadCurrentValues() {
+    public static void loadCurrentGenderValues() {
         maleCount = dashboardBO.getGenderCount("male");
         femaleCount = dashboardBO.getGenderCount("female");
     }
@@ -78,7 +89,7 @@ public class DashboardFormController implements Initializable {
         ObservableList<PieChart.Data> genderChartData = FXCollections.observableArrayList(
                 new PieChart.Data("Male", maleCount),
                 new PieChart.Data("Female", femaleCount));
-        genderChartData.forEach(data -> data.nameProperty().bind(Bindings.concat(data.getName(), " students: ", data.pieValueProperty())));
+        genderChartData.forEach(data -> data.nameProperty().bind(Bindings.concat(data.getName(), " : ", data.pieValueProperty())));
         genderChart.getData().addAll(genderChartData);
         genderChartData.get(0).getNode().setStyle("-fx-pie-color: #E74C3C");
         genderChartData.get(1).getNode().setStyle("-fx-pie-color: #FFD700;");
@@ -104,6 +115,11 @@ public class DashboardFormController implements Initializable {
         roomBarChart.getData().addAll(ac,acFood,nonAc,nonAcFood);
     }
 
+    private void setTotLabels() {
+        lblTotStudents.setText((int)maleCount+(int)femaleCount+"");
+        lblTotRooms.setText((int)acCount+(int)acFoodCount+(int)nonACCount+(int)nonACFoodCount+"");
+    }
+
     public void btnRoomsOnAction(ActionEvent actionEvent) {
     }
 
@@ -117,7 +133,8 @@ public class DashboardFormController implements Initializable {
     public void btnPaymentsOnAction(ActionEvent actionEvent) {
     }
 
-    public void btnSettingsOnAction(ActionEvent actionEvent) {
+    public void btnSettingsOnAction(ActionEvent actionEvent) throws IOException {
+        Navigation.setWindow(root, "settings_form.fxml");
     }
 
     public void btnSignOutOnAction(ActionEvent actionEvent) throws IOException {
@@ -126,7 +143,7 @@ public class DashboardFormController implements Initializable {
         alert.setHeaderText("You're about to logout!");
         if (alert.showAndWait().get() == ButtonType.OK) {
             AnchorPane anchorPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/login_form.fxml")));
-            new FadeInUp(anchorPane).play();
+            new FadeInDown(anchorPane).play();
             Scene scene = new Scene(anchorPane);
             Stage logWindow = (Stage) root.getScene().getWindow();
             logWindow.setScene(scene);

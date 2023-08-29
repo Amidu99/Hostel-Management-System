@@ -126,19 +126,19 @@ public class StudentFormController implements Initializable {
     }
 
     private void getAll() {
-            ObservableList<StudentTM> obList = FXCollections.observableArrayList();
-            List<StudentDTO> studentList = studentBO.getAllStudents();
-            for(StudentDTO studentDTO : studentList) {
-                obList.add(new StudentTM(
-                        studentDTO.getStudent_id(),
-                        studentDTO.getName(),
-                        studentDTO.getBirthday(),
-                        studentDTO.getGender(),
-                        studentDTO.getContact(),
-                        studentDTO.getAddress()
-                ));
-            }
-            tblStudent.setItems(obList);
+        ObservableList<StudentTM> obList = FXCollections.observableArrayList();
+        List<StudentDTO> studentList = studentBO.getAllStudents();
+        for(StudentDTO studentDTO : studentList) {
+            obList.add(new StudentTM(
+                studentDTO.getStudent_id(),
+                studentDTO.getName(),
+                studentDTO.getBirthday(),
+                studentDTO.getGender(),
+                studentDTO.getContact(),
+                studentDTO.getAddress()
+            ));
+        }
+        tblStudent.setItems(obList);
     }
 
     private void loadGenderTypes() {
