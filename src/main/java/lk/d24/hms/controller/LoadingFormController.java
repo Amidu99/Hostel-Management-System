@@ -33,6 +33,9 @@ public class LoadingFormController {
                     for (int i = 0; i <= 100; i++) {
                         updateProgress(i, 100);
                         updateMessage("Loading "+i+"%");
+                        if(i==99){
+                            DashboardFormController.loadCurrentGenderValues();
+                        }
                         if(i==100){loadLoginForm();}
                         Thread.sleep(80);
                     }

@@ -46,6 +46,17 @@ public class ReservationBOImpl implements ReservationBO {
     }
 
     @Override
+    public ReservationDTO searchReservation(String reservation_id) {
+        Reservation r = reservationDAO.search(reservation_id);
+        if(r!=null){
+            return new ReservationDTO(r.getReservation_id(), r.getDate(),
+                new StudentDTO(r.getStudent().getStudent_id(), r.getStudent().getName(), r.getStudent().getBirthday(), r.getStudent().getGender(), r.getStudent().getContact(), r.getStudent().getAddress()),
+                new RoomDTO(r.getRoom().getRoom_id(), r.getRoom().getType(), r.getRoom().getKey_money(), r.getRoom().getQty()), r.getPayment_status());
+        }
+        return null;
+    }
+
+    @Override
     public boolean deleteReservation(String reservation_id) {
         return reservationDAO.delete(reservation_id);
     }

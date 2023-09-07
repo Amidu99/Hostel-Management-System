@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
@@ -10,6 +11,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -20,20 +22,20 @@
             <Image url="@../assets/images/glow.gif" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="50.0" arcWidth="50.0" blendMode="MULTIPLY" fill="#00cfff" height="125.0" layoutX="250.0" layoutY="475.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <Label layoutX="293.0" layoutY="475.0" text="Total Students">
+      <Rectangle arcHeight="50.0" arcWidth="50.0" blendMode="MULTIPLY" fill="#00d0ffe2" height="125.0" layoutX="250.0" layoutY="475.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Label layoutX="293.0" layoutY="475.0" text="Total Students" textFill="#110e0e">
          <font>
             <Font name="Javanese Text" size="18.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="50.0" arcWidth="50.0" blendMode="MULTIPLY" fill="#00cfff" height="125.0" layoutX="510.0" layoutY="475.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <Label layoutX="560.0" layoutY="475.0" text="Total Rooms">
+      <Rectangle arcHeight="50.0" arcWidth="50.0" blendMode="MULTIPLY" fill="#00d0ffc3" height="125.0" layoutX="510.0" layoutY="475.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Label layoutX="560.0" layoutY="475.0" text="Total Rooms" textFill="#110e0e">
          <font>
             <Font name="Javanese Text" size="18.0" />
          </font>
       </Label>
       <Rectangle arcHeight="50.0" arcWidth="50.0" blendMode="MULTIPLY" fill="#00cfff" height="125.0" layoutX="770.0" layoutY="475.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <Label layoutX="795.0" layoutY="475.0" text="Awaiting Payments">
+      <Label layoutX="795.0" layoutY="475.0" text="Awaiting Payments" textFill="#110e0e">
          <font>
             <Font name="Javanese Text" size="18.0" />
          </font>
@@ -48,14 +50,14 @@
             <Image url="@../assets/icons/logo-low.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="224.0" fitWidth="343.0" layoutX="15.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="224.0" fitWidth="343.0" layoutX="14.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons/buttons.png" />
          </image>
       </ImageView>
       <Label fx:id="lblUser" layoutX="34.0" layoutY="112.0" text="Hi Admin" textFill="WHITE">
          <font>
-            <Font name="Comic Sans MS Bold" size="18.0" />
+            <Font name="Comic Sans MS Bold" size="20.0" />
          </font>
       </Label>
       <Label fx:id="lblDate" layoutX="5.0" layoutY="610.0" textFill="#030303">
@@ -71,8 +73,8 @@
             <Cursor fx:constant="NONE" />
          </cursor>
       </Label>
-      <PieChart fx:id="genderChart" layoutX="250.0" layoutY="100.0" prefHeight="350.0" prefWidth="400.0" title="Students" />
-      <BarChart fx:id="roomBarChart" barGap="0.0" blendMode="MULTIPLY" categoryGap="0.0" layoutX="700.0" layoutY="100.0" prefHeight="350.0" prefWidth="350.0" title="Hostel Rooms">
+      <PieChart fx:id="genderChart" labelLineLength="10.0" layoutX="150.0" layoutY="115.0" prefHeight="350.0" prefWidth="400.0" />
+      <BarChart fx:id="roomBarChart" barGap="0.0" blendMode="MULTIPLY" categoryGap="0.0" layoutX="485.0" layoutY="115.0" prefHeight="350.0" prefWidth="250.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -80,27 +82,35 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </BarChart>
-      <JFXButton fx:id="btnRooms" contentDisplay="GRAPHIC_ONLY" layoutX="25.0" layoutY="215.0" onAction="#btnRoomsOnAction" prefHeight="35.0" prefWidth="115.0" text="Rooms">
+      <BarChart fx:id="reservedRoomBarChart" barGap="0.0" blendMode="MULTIPLY" categoryGap="0.0" layoutX="1000.0" layoutY="115.0" prefHeight="350.0" prefWidth="150.0">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis side="LEFT" />
+         </yAxis>
+      </BarChart>
+      <JFXButton fx:id="btnRooms" contentDisplay="GRAPHIC_ONLY" layoutX="24.0" layoutY="174.0" onAction="#btnRoomsOnAction" prefHeight="35.0" prefWidth="115.0" text="Rooms">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
-      <JFXButton fx:id="btnStudents" contentDisplay="GRAPHIC_ONLY" layoutX="39.0" layoutY="258.0" onAction="#btnStudentsOnAction" prefHeight="35.0" prefWidth="115.0" text="Students">
+      <JFXButton fx:id="btnStudents" contentDisplay="GRAPHIC_ONLY" layoutX="38.0" layoutY="217.0" onAction="#btnStudentsOnAction" prefHeight="35.0" prefWidth="115.0" text="Students">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
-      <JFXButton fx:id="btnReservation" contentDisplay="GRAPHIC_ONLY" layoutX="55.0" layoutY="301.0" onAction="#btnReservationOnAction" prefHeight="35.0" prefWidth="115.0" text="Reservations">
+      <JFXButton fx:id="btnReservation" contentDisplay="GRAPHIC_ONLY" layoutX="54.0" layoutY="260.0" onAction="#btnReservationOnAction" prefHeight="35.0" prefWidth="115.0" text="Reservations">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
-      <JFXButton fx:id="btnPayments" contentDisplay="GRAPHIC_ONLY" layoutX="39.0" layoutY="343.0" onAction="#btnPaymentsOnAction" prefHeight="35.0" prefWidth="115.0" text="Payments">
+      <JFXButton fx:id="btnPayments" contentDisplay="GRAPHIC_ONLY" layoutX="38.0" layoutY="302.0" onAction="#btnPaymentsOnAction" prefHeight="35.0" prefWidth="115.0" text="Payments">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
-      <JFXButton fx:id="btnSettings" contentDisplay="GRAPHIC_ONLY" layoutX="24.0" layoutY="387.0" onAction="#btnSettingsOnAction" prefHeight="35.0" prefWidth="115.0" text="Settings">
+      <JFXButton fx:id="btnSettings" contentDisplay="GRAPHIC_ONLY" layoutX="23.0" layoutY="346.0" onAction="#btnSettingsOnAction" prefHeight="35.0" prefWidth="115.0" text="Settings">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
-      <JFXButton fx:id="btnSignOut" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="28.0" layoutY="520.0" maxHeight="36.0" maxWidth="90.0" minHeight="36.0" minWidth="90.0" onAction="#btnSignOutOnAction" prefHeight="36.0" prefWidth="90.0" text="sign out">
+      <JFXButton fx:id="btnSignOut" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="15.0" layoutY="415.0" maxHeight="36.0" maxWidth="90.0" minHeight="36.0" minWidth="90.0" onAction="#btnSignOutOnAction" prefHeight="36.0" prefWidth="90.0" text="sign out">
          <graphic>
             <ImageView fitHeight="36.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -125,6 +135,109 @@
       <Label fx:id="lblWaitingPay" layoutX="834.0" layoutY="510.0" text="22">
          <font>
             <Font name="DS-Digital Bold" size="72.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnStudents1" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="275.0" layoutY="475.0" onAction="#btnStudentsOnAction" prefHeight="125.0" prefWidth="150.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnRooms1" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="536.0" layoutY="475.0" onAction="#btnRoomsOnAction" prefHeight="125.0" prefWidth="150.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnPayments1" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="795.0" layoutY="476.0" onAction="#btnPaymentsOnAction" prefHeight="125.0" prefWidth="150.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <PieChart fx:id="paymentChart" labelLineLength="10.0" layoutX="670.0" layoutY="115.0" legendVisible="false" prefHeight="350.0" prefWidth="400.0" />
+      <Label layoutX="392.0" layoutY="5.0" text="D24 DASHBOARD" textFill="#0023ff">
+         <font>
+            <Font name="Gunplay 3D" size="64.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="312.0" layoutY="105.0" text="Students">
+         <font>
+            <Font name="Ebrima Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="582.0" layoutY="105.0" text="Rooms">
+         <font>
+            <Font name="Ebrima Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="828.0" layoutY="105.0" text="Payments">
+         <font>
+            <Font name="Ebrima Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1040.0" layoutY="105.0" text="Reserved Rooms">
+         <font>
+            <Font name="Ebrima Bold" size="18.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="30.0" layoutX="780.0" layoutY="431.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="180.0" />
+      <Circle fill="#2eb82e" layoutX="800.0" layoutY="447.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fill="#ff1919" layoutX="875.0" layoutY="447.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Label layoutX="815.0" layoutY="438.0" text="Paid" />
+      <Label layoutX="890.0" layoutY="438.0" text="Not Paid" />
+      <Rectangle arcHeight="50.0" arcWidth="50.0" blendMode="MULTIPLY" fill="#04c3ee" height="125.0" layoutX="1025.0" layoutY="475.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="160.0" />
+      <Label layoutX="1082.0" layoutY="475.0" text="Alerts" textFill="#110e0e">
+         <font>
+            <Font name="Javanese Text" size="18.0" />
+         </font>
+      </Label>
+      <JFXTextArea fx:id="lblAlerts" blendMode="SCREEN" editable="false" focusColor="TRANSPARENT" layoutX="1048.0" layoutY="515.0" prefHeight="70.0" prefWidth="115.0" promptText="Nothing Special.." text="Nothing Special.." unFocusColor="TRANSPARENT">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </JFXTextArea>
+      <Rectangle arcHeight="50.0" arcWidth="50.0" blendMode="MULTIPLY" fill="#04c3ee" height="125.0" layoutX="20.0" layoutY="475.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="170.0" />
+      <Label layoutX="39.0" layoutY="475.0" text="Available Rooms" textFill="#110e0e">
+         <font>
+            <Font name="Javanese Text" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="515.0" text="&gt; AC Rooms              -" textFill="#110e0e">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="535.0" text="&gt; AC+Food Rooms   -" textFill="#110e0e">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="555.0" text="&gt; Non AC Rooms      -" textFill="#110e0e">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="575.0" text="&gt; Non AC+Food R.   -" textFill="#110e0e">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblAcCount" layoutX="155.0" layoutY="515.0" textFill="#cdc2c2">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblAcFoodCount" layoutX="155.0" layoutY="535.0" textFill="#cdc2c2">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNonAcCount" layoutX="155.0" layoutY="555.0" textFill="#cdc2c2">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNonAcFoodCount" layoutX="155.0" layoutY="575.0" textFill="#cdc2c2">
+         <font>
+            <Font name="System Bold" size="12.0" />
          </font>
       </Label>
    </children>

@@ -19,4 +19,19 @@ public class RoomBOImpl implements RoomBO {
         }
         return allRooms;
     }
+
+    @Override
+    public boolean addRoom(RoomDTO roomDTO) {
+        return roomDAO.add(new Room(roomDTO.getRoom_id(), roomDTO.getType(), roomDTO.getKey_money(), roomDTO.getQty()));
+    }
+
+    @Override
+    public boolean updateRoom(RoomDTO roomDTO) {
+        return roomDAO.update(new Room(roomDTO.getRoom_id(), roomDTO.getType(), roomDTO.getKey_money(), roomDTO.getQty()));
+    }
+
+    @Override
+    public boolean deleteRoom(String room_id) {
+        return roomDAO.delete(room_id);
+    }
 }

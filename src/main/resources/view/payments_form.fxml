@@ -1,14 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.d24.hms.controller.PaymentsFormController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane fx:id="root" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hms.controller.PaymentsFormController">
+   <children>
+      <ImageView fitHeight="450.0" fitWidth="700.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/images/frame-bg.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnBack" layoutX="15.0" layoutY="410.0" onAction="#btnBackOnAction" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #2141dd; -fx-border-color: #10039d;" text="Back" textFill="#10039d">
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label blendMode="MULTIPLY" layoutX="165.0" layoutY="15.0" text="Awaiting Payments">
+         <font>
+            <Font name="Gunplay 3D" size="50.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblClock" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="575.0" layoutY="410.0" prefHeight="30.0" prefWidth="110.0">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="NONE" />
+         </cursor>
+      </Label>
+      <TableView fx:id="tblPayments" blendMode="MULTIPLY" layoutX="25.0" layoutY="105.0" prefHeight="290.0" prefWidth="650.0">
+         <columns>
+            <TableColumn fx:id="colResID" prefWidth="90.0" text="Reservation ID" />
+            <TableColumn fx:id="colDate" prefWidth="100.0" text="Date" />
+            <TableColumn fx:id="colRoomID" prefWidth="90.0" text="Room ID" />
+            <TableColumn fx:id="colKeyMoney" prefWidth="100.0" text="Key Money" />
+            <TableColumn fx:id="colStuID" prefWidth="90.0" text="Student ID" />
+            <TableColumn fx:id="colName" prefWidth="170.0" text="Name" />
+         </columns>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </TableView>
+   </children>
 </AnchorPane>

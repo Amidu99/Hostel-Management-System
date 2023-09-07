@@ -16,7 +16,7 @@ public class PaymentsBOImpl implements PaymentsBO {
     @Override
     public List<ReservationDTO> getAllPendingPayments() {
         List<ReservationDTO> allReservations = new ArrayList<>();
-        List<Reservation> reservations = reservationDAO.getAllNotPaid();
+        List<Reservation> reservations = reservationDAO.getPaymentCounts("Not Paid");
         for (Reservation r : reservations){
             allReservations.add(new ReservationDTO(r.getReservation_id(), r.getDate(),
                     new StudentDTO(r.getStudent().getStudent_id(), r.getStudent().getName(), r.getStudent().getBirthday(), r.getStudent().getGender(), r.getStudent().getContact(), r.getStudent().getAddress()),

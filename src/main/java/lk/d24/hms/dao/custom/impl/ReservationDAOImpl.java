@@ -28,9 +28,14 @@ public class ReservationDAOImpl implements ReservationDAO {
     @Override
     public Reservation search(String reservation_id) {
         Session session = FactoryConfiguration.getInstance().getSession();
-        Reservation reservation = session.load(Reservation.class, reservation_id);
-        session.close();
-        return reservation;
+        try {
+            String hql = "SELECT r FROM reservation r WHERE r.reservation_id = :reservation_id";
+            Query<Reservation> query = session.createQuery(hql, Reservation.class);
+            query.setParameter("reservation_id", reservation_id);
+            return query.uniqueResult();
+        } finally {
+            session.close();
+        }
     }
 
     @Override
@@ -115,5 +120,31 @@ public class ReservationDAOImpl implements ReservationDAO {
         } finally {
             session.close();
         }
+    }
+
+    @Override
+    public List<Reservation> getPaymentCounts(String status) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        try {
+            String hql = "SELECT r FROM reservation r WHERE r.payment_status = :status";
+            Query query = session.createQuery(hql);
+            query.setParameter("status", status);
+            List<Reservation> reservationList = query.list();
+            return reservationList;
+        } catch (Exception e) {
+            System.out.println("ReservationDAOImpl : " + e);
+            return null;
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public double getRoomTypeFilledCount(String room_id) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        String hql = "SELECT COUNT(*) FROM reservation r WHERE r.room.room_id = :room_id";
+        Query query = session.createQuery(hql);
+        query.setParameter("room_id", room_id);
+        return (long) query.uniqueResult();
     }
 }

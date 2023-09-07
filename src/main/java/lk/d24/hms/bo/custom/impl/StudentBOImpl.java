@@ -39,4 +39,13 @@ public class StudentBOImpl implements StudentBO {
     public boolean deleteStudent(String student_id) {
         return studentDAO.delete(student_id);
     }
+
+    @Override
+    public StudentDTO searchStudent(String student_id) {
+        Student s = studentDAO.search(student_id);
+        if(s!=null){
+            return new StudentDTO(s.getStudent_id(), s.getName(), s.getBirthday(), s.getGender(), s.getContact(), s.getAddress());
+        }
+        return null;
+    }
 }

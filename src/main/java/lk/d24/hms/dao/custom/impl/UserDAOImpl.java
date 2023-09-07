@@ -133,7 +133,10 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User search(String id) {
-        return null;
+    public User search(String userID) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        User user = session.load(User.class, userID);
+        session.close();
+        return user;
     }
 }

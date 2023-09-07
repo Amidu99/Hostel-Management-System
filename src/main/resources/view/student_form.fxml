@@ -20,18 +20,6 @@
             <Image url="@../assets/images/frame-bg.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnBack" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="16.0" layoutY="16.0" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" onAction="#btnBackOnAction" prefHeight="50.0" prefWidth="50.0">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/icons/back.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
       <TableView fx:id="tblStudent" blendMode="MULTIPLY" layoutX="50.0" layoutY="330.0" onMouseClicked="#tblStudentOnAction" prefHeight="280.0" prefWidth="1100.0">
          <columns>
             <TableColumn fx:id="colStuID" editable="false" prefWidth="120.0" text="Student_ID" />
@@ -127,7 +115,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="cmbGender" blendMode="MULTIPLY" layoutX="740.0" layoutY="225.0" prefHeight="30.0" prefWidth="150.0">
+      <JFXComboBox fx:id="cmbGender" blendMode="MULTIPLY" focusColor="TRANSPARENT" layoutX="740.0" layoutY="225.0" prefHeight="30.0" prefWidth="150.0" unFocusColor="#878787a8">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -181,5 +169,21 @@
             <Font name="System Bold Italic" size="11.0" />
          </font>
       </Label>
+      <JFXButton fx:id="btnBack" layoutX="765.0" layoutY="280.0" onAction="#btnBackOnAction" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #2141dd; -fx-border-color: #10039d;" text="Back" textFill="#10039d">
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fx:id="btnSearch" blendMode="LIGHTEN" fitHeight="28.0" fitWidth="28.0" layoutX="311.0" layoutY="126.0" onMouseClicked="#btnSearchClickOnAction" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons/search.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </AnchorPane>

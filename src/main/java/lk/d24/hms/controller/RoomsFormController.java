@@ -15,8 +15,12 @@ import lk.d24.hms.bo.custom.RoomBO;
 import lk.d24.hms.dto.RoomDTO;
 import lk.d24.hms.dto.tm.RoomTM;
 import lk.d24.hms.util.Clock;
+import lk.d24.hms.util.Navigation;
+import lk.d24.hms.util.RegExPatterns;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class RoomsFormController implements Initializable {
@@ -64,16 +68,7 @@ public class RoomsFormController implements Initializable {
     private TableColumn<?, ?> colQty;
 
     @FXML
-    private JFXButton btnBack;
-
-    @FXML
     private JFXButton btnReset;
-
-    @FXML
-    private JFXButton btnSave;
-
-    @FXML
-    private JFXButton btnUpdate;
 
     @FXML
     private JFXButton btnDelete;
@@ -121,51 +116,133 @@ public class RoomsFormController implements Initializable {
 
     @FXML
     void btnResetOnAction(ActionEvent event) {
-
+        tblRooms.getSelectionModel().clearSelection();
+        getAll();
+        setDefaultWarnings();
+        txtRoomID.clear();
+        txtRoomType.clear();
+        txtKeyMoney.clear();
+        txtQty.clear();
+        txtRoomID.requestFocus();
     }
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-
+        setDefaultWarnings();
+        if(!txtRoomID.getText().isEmpty() && !txtRoomType.getText().isEmpty() && !txtKeyMoney.getText().isEmpty() && !txtQty.getText().isEmpty()){
+            boolean isRoomIDMatched = RegExPatterns.getRoomNoPattern().matcher(txtRoomID.getText()).matches();
+            boolean isTypeMatched = RegExPatterns.getTypePattern().matcher(txtRoomType.getText()).matches();
+            boolean isKeyMoneyMatched = RegExPatterns.getAmountPattern().matcher(txtKeyMoney.getText()).matches();
+            boolean isQtyMatched = RegExPatterns.getQtyPattern().matcher(txtQty.getText()).matches();
+            String room_id;
+            String type;
+            double key_money;
+            int qty;
+            if(isRoomIDMatched) {
+                if (isTypeMatched) {
+                    if (isKeyMoneyMatched) {
+                        if (isQtyMatched){
+                            room_id = txtRoomID.getText();
+                            type = txtRoomType.getText();
+                            key_money = Double.parseDouble(txtKeyMoney.getText());
+                            qty = Integer.parseInt(txtQty.getText());
+                            boolean added = roomBO.addRoom(new RoomDTO(room_id, type, key_money, qty));
+                            if (added) {
+                                new Alert(Alert.AlertType.INFORMATION, "Room type added successfully..").showAndWait();
+                            btnResetOnAction(event);
+                            }else { new Alert(Alert.AlertType.ERROR, "Oops Something went wrong..\nRoom type not added.").showAndWait();}
+                        }else{ setDefaultWarnings(); lblInvalidQty.setVisible(true); txtQty.requestFocus(); }
+                    }else{ setDefaultWarnings(); lblInvalidAmount.setVisible(true); txtKeyMoney.requestFocus(); }
+                }else{ setDefaultWarnings(); lblInvalidType.setVisible(true); txtRoomType.requestFocus(); }
+            }else{ setDefaultWarnings(); lblInvalidRoomID.setVisible(true); txtRoomID.requestFocus(); }
+        }else{ new Alert(Alert.AlertType.ERROR, "Fields cannot be empty.").show(); }
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-
+        setDefaultWarnings();
+        if(!txtRoomID.getText().isEmpty() && !txtRoomType.getText().isEmpty() && !txtKeyMoney.getText().isEmpty() && !txtQty.getText().isEmpty()){
+            boolean isRoomIDMatched = RegExPatterns.getRoomNoPattern().matcher(txtRoomID.getText()).matches();
+            boolean isTypeMatched = RegExPatterns.getTypePattern().matcher(txtRoomType.getText()).matches();
+            boolean isKeyMoneyMatched = RegExPatterns.getAmountPattern().matcher(txtKeyMoney.getText()).matches();
+            boolean isQtyMatched = RegExPatterns.getQtyPattern().matcher(txtQty.getText()).matches();
+            String room_id;
+            String type;
+            double key_money;
+            int qty;
+            if(isRoomIDMatched) {
+                if (isTypeMatched) {
+                    if (isKeyMoneyMatched) {
+                        if (isQtyMatched){
+                            room_id = txtRoomID.getText();
+                            type = txtRoomType.getText();
+                            key_money = Double.parseDouble(txtKeyMoney.getText());
+                            qty = Integer.parseInt(txtQty.getText());
+                            boolean updated = roomBO.updateRoom(new RoomDTO(room_id, type, key_money, qty));
+                            if (updated) {
+                                new Alert(Alert.AlertType.INFORMATION, "Room type updated successfully..").showAndWait();
+                                btnResetOnAction(event);
+                            }else { new Alert(Alert.AlertType.ERROR, "Oops Something went wrong..\nRoom type not updated.").showAndWait();}
+                        }else{ setDefaultWarnings(); lblInvalidQty.setVisible(true); txtQty.requestFocus(); }
+                    }else{ setDefaultWarnings(); lblInvalidAmount.setVisible(true); txtKeyMoney.requestFocus(); }
+                }else{ setDefaultWarnings(); lblInvalidType.setVisible(true); txtRoomType.requestFocus(); }
+            }else{ setDefaultWarnings(); lblInvalidRoomID.setVisible(true); txtRoomID.requestFocus(); }
+        }else{ new Alert(Alert.AlertType.ERROR, "Fields cannot be empty.").show(); }
     }
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-
+        btnDelete.setOnAction((e) -> {
+            String room_id = txtRoomID.getText();
+            if(!room_id.isEmpty()){
+                ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+                ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+                Optional<ButtonType> result = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure to delete?", yes, no).showAndWait();
+                if (result.orElse(no) == yes) {
+                    boolean deleted = roomBO.deleteRoom(room_id);
+                    if(deleted){
+                        new Alert(Alert.AlertType.INFORMATION, "Room type deleted successfully.").showAndWait();
+                        btnResetOnAction(event);
+                    }else{new Alert(Alert.AlertType.ERROR, "Invalid Room_ID:\nPlease insert a valid Room_ID").show();}
+                }
+            }else{ new Alert(Alert.AlertType.ERROR, "Field cannot be empty:\nPlease enter the Room_ID").show(); }
+        });
     }
 
     @FXML
     void tblRoomsOnClick(MouseEvent event) {
-
+        tblRooms.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                txtRoomID.setText(newSelection.getRoom_id());
+                txtRoomType.setText(newSelection.getType());
+                txtKeyMoney.setText(String.valueOf(newSelection.getKey_money()));
+                txtQty.setText(String.valueOf(newSelection.getQty()));
+            }
+        });
     }
 
     @FXML
     void txtRoomIDOnAction(ActionEvent event) {
-
+        txtRoomType.requestFocus();
     }
 
     @FXML
     void txtRoomTypeOnAction(ActionEvent event) {
-
+        txtKeyMoney.requestFocus();
     }
 
     @FXML
     void txtKeyMoneyOnAction(ActionEvent event) {
-
+        txtQty.requestFocus();
     }
 
     @FXML
     void txtQtyOnAction(ActionEvent event) {
-
+        btnReset.requestFocus();
     }
 
     @FXML
-    void btnBackOnAction(ActionEvent event) {
-
+    void btnBackOnAction(ActionEvent event) throws IOException {
+        Navigation.navigateToDashBoard(root);
     }
 }

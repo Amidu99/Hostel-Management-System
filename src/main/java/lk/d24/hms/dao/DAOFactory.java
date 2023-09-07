@@ -18,8 +18,8 @@ public class DAOFactory {
 
     public SuperDAO getDAO(DAOTypes types) {
         switch (types) {
-//            case RESERVATION:
-//                return ReservationDaoImpl();
+            case RESERVATION:
+                return new ReservationDAOImpl();
             case ROOM:
                 return new RoomDAOImpl();
             case STUDENT:

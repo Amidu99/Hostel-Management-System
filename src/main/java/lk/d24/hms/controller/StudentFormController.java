@@ -154,6 +154,10 @@ public class StudentFormController implements Initializable {
         txtStudentID.setText(lblNextStudentID.getText());
         getAll();
         setDefaultWarnings();
+        resetFields();
+    }
+
+    private void resetFields(){
         txtName.clear();
         txtBirthday.setValue(null);
         cmbGender.setValue(null);
@@ -291,5 +295,24 @@ public class StudentFormController implements Initializable {
 
     public void txtBirthdayOnAction(ActionEvent actionEvent) {
         cmbGender.requestFocus();
+    }
+
+    public void btnSearchClickOnAction(MouseEvent mouseEvent) {
+        resetFields();
+        setDefaultWarnings();
+        if(!txtStudentID.getText().isEmpty()){
+            boolean isStudentIDMatched = RegExPatterns.getStudentIDPattern().matcher(txtStudentID.getText()).matches();
+            if(isStudentIDMatched){
+                String student_id = txtStudentID.getText();
+                StudentDTO studentDTO = studentBO.searchStudent(student_id);
+                if(studentDTO!=null){
+                    txtName.setText(studentDTO.getName());
+                    txtBirthday.setValue(studentDTO.getBirthday());
+                    txtAddress.setText(studentDTO.getAddress());
+                    txtTel.setText(studentDTO.getContact());
+                    cmbGender.setValue(studentDTO.getGender());
+                }else { new Alert(Alert.AlertType.INFORMATION, "Oops no student details..\nCheck the Student ID").showAndWait();}
+            }else{ setDefaultWarnings(); lblInvalidStudentID.setVisible(true); txtStudentID.requestFocus(); }
+        }else{ new Alert(Alert.AlertType.ERROR, "Student ID cannot be empty.").show(); }
     }
 }

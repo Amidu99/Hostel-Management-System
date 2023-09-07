@@ -1,14 +1,209 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.d24.hms.controller.ReservationsFormController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane fx:id="root" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hms.controller.ReservationsFormController">
+   <children>
+      <ImageView fitHeight="650.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/frame-bg.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tblReservation" blendMode="MULTIPLY" layoutX="50.0" layoutY="330.0" onMouseClicked="#tblReservationOnAction" prefHeight="280.0" prefWidth="1100.0">
+         <columns>
+            <TableColumn fx:id="colResID" editable="false" prefWidth="150.0" text="Reservation_ID" />
+            <TableColumn fx:id="colDate" editable="false" prefWidth="160.0" text="Date" />
+            <TableColumn fx:id="colStuID" editable="false" minWidth="0.0" prefWidth="150.0" text="Student_ID" />
+            <TableColumn fx:id="colName" editable="false" prefWidth="275.0" text="Name" />
+            <TableColumn fx:id="colRoomID" minWidth="0.0" prefWidth="150.0" text="Room_ID" />
+            <TableColumn fx:id="colPayStatus" editable="false" prefWidth="200.0" text="Payment Status" />
+         </columns>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </TableView>
+      <JFXButton fx:id="btnReset" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="856.0" layoutY="280.0" onAction="#btnResetOnAction" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: #edfc6e; -fx-border-color: #bca70d;" text="Reset" textFill="#bca70d">
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnSave" contentDisplay="CENTER" graphicTextGap="3.0" layoutX="933.0" layoutY="280.0" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: #29c63e; -fx-border-color: #077916;" text="Save" textFill="#077916">
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnUpdate" contentDisplay="CENTER" graphicTextGap="3.0" layoutX="1010.0" layoutY="280.0" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: #d044af; -fx-border-color: #801559;" text="Update" textFill="#801559">
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnDelete" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1087.0" layoutY="280.0" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: #ff1c1c; -fx-border-color: #9a0707;" text="Delete" textFill="#9a0707">
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TextField fx:id="txtStudentID" blendMode="MULTIPLY" layoutX="365.0" layoutY="125.0" onAction="#txtStudentIDOnAction" prefHeight="30.0" prefWidth="200.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtName" blendMode="MULTIPLY" editable="false" layoutX="365.0" layoutY="200.0" prefHeight="30.0" prefWidth="200.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="365.0" layoutY="105.0" text="Student ID*">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="365.0" layoutY="180.0" text="Name">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label blendMode="MULTIPLY" layoutX="381.0" layoutY="12.0" text="Manage Reservations">
+         <font>
+            <Font name="Gunplay 3D" size="50.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNextResID" alignment="CENTER" contentDisplay="CENTER" layoutX="1032.0" layoutY="60.0" prefHeight="30.0" prefWidth="100.0" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="cmbPayment" blendMode="MULTIPLY" focusColor="TRANSPARENT" layoutX="910.0" layoutY="125.0" prefHeight="30.0" prefWidth="150.0" unFocusColor="#878787a8">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXComboBox>
+      <Label layoutX="910.0" layoutY="105.0" text="Payment Status*">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="1025.0" layoutY="40.0" text="Next Reservation ID">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblInvalidResID" layoutX="60.0" layoutY="155.0" text="**invalid reservation id, ( must be like 'RE-0001' )**" textFill="#d70c0c" visible="false">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblClock" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1035.0" layoutY="610.0" prefHeight="30.0" prefWidth="160.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="NONE" />
+         </cursor>
+      </Label>
+      <DatePicker fx:id="txtDate" blendMode="MULTIPLY" editable="false" layoutX="90.0" layoutY="200.0" onAction="#txtDateOnAction" prefHeight="30.0" prefWidth="200.0" />
+      <Label layoutX="90.0" layoutY="180.0" text="Date*">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblInvalidDate" layoutX="137.0" layoutY="230.0" text="**invalid date**" textFill="#d70c0c" visible="false">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtResID" blendMode="MULTIPLY" layoutX="90.0" layoutY="125.0" onAction="#txtResIDOnAction" prefHeight="30.0" prefWidth="200.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="90.0" layoutY="105.0" text="Reservation ID*">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtRoomType" blendMode="MULTIPLY" editable="false" layoutX="640.0" layoutY="200.0" prefHeight="30.0" prefWidth="200.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="640.0" layoutY="105.0" text="Room ID*">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="640.0" layoutY="180.0" text="Room Type">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtKeyMoney" blendMode="MULTIPLY" editable="false" layoutX="910.0" layoutY="200.0" prefHeight="30.0" prefWidth="200.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="910.0" layoutY="180.0" text="Key Money">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblInvalidStudentID" layoutX="344.0" layoutY="155.0" text="**invalid student id, ( must be like 'S-0001' )**" textFill="#d70c0c" visible="false">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblInvalidRoomID" layoutX="621.0" layoutY="155.0" text="**invalid room id, ( must be like 'RM-0001' )**" textFill="#d70c0c" visible="false">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnBack" layoutX="765.0" layoutY="280.0" onAction="#btnBackOnAction" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #2141dd; -fx-border-color: #10039d;" text="Back" textFill="#10039d">
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXComboBox fx:id="cmbRoomID" blendMode="MULTIPLY" focusColor="TRANSPARENT" layoutX="640.0" layoutY="125.0" onAction="#txtRoomIDOnAction" prefHeight="30.0" prefWidth="200.0" unFocusColor="#898888a8">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXComboBox>
+      <Label fx:id="lblRoomFullAlert" layoutX="90.0" layoutY="245.0" textFill="#d70c0c">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="btnSearch" blendMode="LIGHTEN" fitHeight="28.0" fitWidth="28.0" layoutX="261.0" layoutY="125.0" onMouseClicked="#btnSearchClickOnAction" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons/search.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
 </AnchorPane>

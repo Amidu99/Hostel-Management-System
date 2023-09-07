@@ -1,6 +1,7 @@
 package lk.d24.hms.dao.custom.impl;
 
 import lk.d24.hms.dao.custom.StudentDAO;
+import lk.d24.hms.entity.Reservation;
 import lk.d24.hms.entity.Student;
 import lk.d24.hms.util.FactoryConfiguration;
 import org.hibernate.Session;
@@ -26,8 +27,16 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public Student search(String id) {
-        return null;
+    public Student search(String student_id) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        try {
+            String hql = "SELECT s FROM student s WHERE s.student_id = :student_id";
+            Query<Student> query = session.createQuery(hql, Student.class);
+            query.setParameter("student_id", student_id);
+            return query.uniqueResult();
+        } finally {
+            session.close();
+        }
     }
 
     @Override
@@ -71,16 +80,22 @@ public class StudentDAOImpl implements StudentDAO {
     @Override
     public boolean delete(String student_id) {
         Session session = FactoryConfiguration.getInstance().getSession();
-        Student student = session.load(Student.class, student_id);
-        if (student == null) {
-            session.close();
-            return false;
-        } else {
-            Transaction transaction = session.beginTransaction();
+        try {
+            Student student = session.load(Student.class, student_id);
+            List<Reservation> reservationList = student.getReservationList();
+            for (Reservation reservation : reservationList) {
+                reservation.setRoom(null);
+                session.delete(reservation);
+            }
             session.delete(student);
+            Transaction transaction = session.beginTransaction();
             transaction.commit();
-            session.close();
             return true;
+        } catch (Exception e) {
+            System.out.println("StudentDAOImpl : " + e);
+            return false;
+        } finally {
+            session.close();
         }
     }
 
@@ -98,7 +113,7 @@ public class StudentDAOImpl implements StudentDAO {
             }
             return "S-0001";
         } catch (Exception e) {
-            System.out.println("UserDAOImpl : " + e);
+            System.out.println("StudentDAOImpl : " + e);
             return null;
         } finally {
             session.close();
