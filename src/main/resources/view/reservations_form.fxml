@@ -20,6 +20,11 @@
             <Image url="@../assets/images/frame-bg.png" />
          </image>
       </ImageView>
+      <ImageView blendMode="SOFT_LIGHT" fitHeight="650.0" fitWidth="1200.0" opacity="0.6" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/images/raining.gif" />
+         </image>
+      </ImageView>
       <TableView fx:id="tblReservation" blendMode="MULTIPLY" layoutX="50.0" layoutY="330.0" onMouseClicked="#tblReservationOnAction" prefHeight="280.0" prefWidth="1100.0">
          <columns>
             <TableColumn fx:id="colResID" editable="false" prefWidth="150.0" text="Reservation_ID" />

@@ -18,6 +18,11 @@
             <Image url="@../assets/images/frame-bg.png" />
          </image>
       </ImageView>
+      <ImageView blendMode="SOFT_LIGHT" fitHeight="450.0" fitWidth="700.0" opacity="0.6" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/images/raining.gif" />
+         </image>
+      </ImageView>
       <JFXButton fx:id="btnBack" layoutX="599.0" layoutY="365.0" onAction="#btnBackOnAction" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #2141dd; -fx-border-color: #10039d;" text="Back" textFill="#10039d">
          <font>
             <Font name="Segoe UI Black" size="12.0" />

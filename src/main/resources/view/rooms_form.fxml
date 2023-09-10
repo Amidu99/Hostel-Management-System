@@ -18,6 +18,11 @@
             <Image url="@../assets/images/frame-bg.png" />
          </image>
       </ImageView>
+      <ImageView blendMode="SOFT_LIGHT" fitHeight="450.0" fitWidth="700.0" opacity="0.6" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/images/raining.gif" />
+         </image>
+      </ImageView>
       <TextField fx:id="txtRoomID" blendMode="MULTIPLY" layoutX="60.0" layoutY="115.0" onAction="#txtRoomIDOnAction" prefHeight="30.0" prefWidth="200.0">
          <font>
             <Font size="14.0" />
