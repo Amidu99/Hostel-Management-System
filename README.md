@@ -1,4 +1,4 @@
-# Hostel-Management-System🏠👩‍💼
+# Hostel-Management-System🏠👩‍💼📄
 ★ 2nd Semester ORM Module Final Project implemented using hibernate & layered architecture.
 
 <p align="center"><img src="https://github.com/Amidu99/Hostel-Management-System/assets/125728431/76dbdf6f-579b-4c18-ae91-253c1fb1037f" width="400" alt="loading"><br></p>
